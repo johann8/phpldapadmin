@@ -4,21 +4,23 @@ ARG BASE_IMAGE=alpine:3.17
 
 FROM ${ARCH}${BASE_IMAGE}
 
-LABEL Maintainer="Johann H. <>" \
-      Description="Docker container with GLPI based on Alpine Linux."
+ARG BUILD_DATE
+
+ARG VCS_REF
+
+LABEL org.label-schema.schema-version="1.0" \
+      org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name=phpldapadmin \
+      org.label-schema.authors="Johann H. <>" \ 
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/johann8/phpldapadmin" \
+      org.label-schema.description="Docker container with PHPLDAPAdmin based on Alpine Linux"
 
 ARG POST_MAX_FILESIZE=5M
 
 ARG UPLOAD_MAX_FILESIZE=10M
 
 ARG PLA_VERSION=1.2.6.4-r1
-
-#ARG ${PHPLDAPADMIN_LANGUAGE:-en_EN} \
-#    ${PHPLDAPADMIN_SERVER_NAME:-My LDAP Server} \
-#    ${PHPLDAPADMIN_SERVER_HOST:-ldap://ldap.mydomain.de} \
-#    ${PHPLDAPADMIN_BIND_ID:-cn=admin,dc=mydomain,dc=de} \
-#    ${TZ:-Europe/Berlin} \
-#    ${PHPLDAPADMIN_PASSWORD_HASH:-ssha}
 
 # Install packages
 RUN apk --no-cache add \
