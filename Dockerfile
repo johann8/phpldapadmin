@@ -96,13 +96,23 @@ RUN rm -rf /var/www/localhost/htdocs \
 ### === fix bug #183 on github ===
 # --- Start ---
 RUN if [ -f /usr/share/webapps/phpldapadmin/lib/functions.php ]; then \
-       #echo -n "creating file backup... "; \
+       # create backup
        mv /usr/share/webapps/phpldapadmin/lib/functions.php /usr/share/webapps/phpldapadmin/lib/functions.php.back; \
-       #echo [DONE]; \
     fi 
 
 COPY assets/phpldapadmin/web/functions.php /usr/share/webapps/phpldapadmin/lib/ 
 # --- End ---
+
+### === fix bug #193 on github ===
+# --- Start ---
+RUN if [ -f /usr/share/webapps/phpldapadmin/lib/createlm.php ]; then \
+       # create backup
+       mv /usr/share/webapps/phpldapadmin/lib/createlm.php /usr/share/webapps/phpldapadmin/lib/createlm.php.back; \
+    fi
+
+COPY assets/phpldapadmin/web/createlm.php /usr/share/webapps/phpldapadmin/lib/
+# --- End ---
+
 
 # Add configuration files
 COPY --chown=nobody rootfs/ /
