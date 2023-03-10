@@ -96,9 +96,9 @@ RUN rm -rf /var/www/localhost/htdocs \
 ### === fix bug #183 on github ===
 # --- Start ---
 RUN if [ -f /usr/share/webapps/phpldapadmin/lib/functions.php ]; then \
-       echo -n "creating file backup... "; \
+       #echo -n "creating file backup... "; \
        mv /usr/share/webapps/phpldapadmin/lib/functions.php /usr/share/webapps/phpldapadmin/lib/functions.php.back; \
-       echo [DONE]; \
+       #echo [DONE]; \
     fi 
 
 COPY assets/phpldapadmin/web/functions.php /usr/share/webapps/phpldapadmin/lib/ 
