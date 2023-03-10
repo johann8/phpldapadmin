@@ -93,6 +93,17 @@ RUN rm -rf /var/www/localhost/htdocs \
     && ln -sf /usr/share/webapps/phpldapadmin/htdocs/ /var/www/localhost/
     #&& cp /etc/phpldapadmin/config.php.example /etc/phpldapadmin/config.php
 
+### === fix bug #183 on github ===
+# --- Start ---
+RUN if [ -f /usr/share/webapps/phpldapadmin/lib/functions.php ]; then \
+       echo -n "creating file backup... "; \
+       mv /usr/share/webapps/phpldapadmin/lib/functions.php /usr/share/webapps/phpldapadmin/lib/functions.php.back; \
+       echo [DONE]; \
+    fi 
+
+COPY assets/phpldapadmin/web/functions.php /usr/share/webapps/phpldapadmin/lib/ 
+# --- End ---
+
 # Add configuration files
 COPY --chown=nobody rootfs/ /
 
