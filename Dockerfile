@@ -20,7 +20,7 @@ ARG POST_MAX_FILESIZE=5M
 
 ARG UPLOAD_MAX_FILESIZE=10M
 
-ARG PLA_VERSION=1.2.6.5-r0
+ARG PLA_VERSION=1.2.6.6-r0
 
 # Install packages
 RUN apk --no-cache add \
