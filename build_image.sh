@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set variables
-_VERSION=0.0.5
+_VERSION=0.0.6
 
 # create build
 docker build -t johann8/phpldapadmin:${_VERSION} .
