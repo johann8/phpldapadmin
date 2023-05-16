@@ -1,8 +1,8 @@
-# PhpLdapAdmin
+<h1 align="center">PhpLdapAdmin</h1>
 
-## Docker images
+## Docker images 🐋
 
-Image is based on [Alpine 3.17](https://hub.docker.com/repository/docker/johann8/phpldapadmin/general).
+Image is based on [Alpine 3.18](https://hub.docker.com/repository/docker/johann8/phpldapadmin/general)
 
 | pull | size alpine | version | platform |
 |:---------------------------------:|:--------------------------------:|:----------------------------------:|:--------------------------------:|
