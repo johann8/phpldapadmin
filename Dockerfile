@@ -1,6 +1,6 @@
 ARG ARCH=
 
-ARG BASE_IMAGE=alpine:3.17
+ARG BASE_IMAGE=alpine:3.18
 
 FROM ${ARCH}${BASE_IMAGE}
 
@@ -22,47 +22,49 @@ ARG UPLOAD_MAX_FILESIZE=10M
 
 ARG PLA_VERSION=1.2.6.6-r0
 
+ENV PHP_VERSION 81
+
 # Install packages
 RUN apk --no-cache add \
         phpldapadmin=${PLA_VERSION} \
-        php81 \
-        php81-fpm \
-        php81-opcache \
-        php81-pecl-apcu \
-        php81-mysqli \
-        php81-cli \
-        php81-ldap \
-        php81-imap \
-        php81-intl \
-        php81-pgsql \
-        php81-json \
-        php81-openssl \
-        php81-curl \
-        php81-zlib \
-        php81-bz2 \
-        php81-soap \
-        php81-xml \
-        php81-fileinfo \
-        php81-phar \
-        php81-intl \
-        php81-dom \
-        php81-xmlreader \
-        php81-ctype \
-        php81-session \
-        php81-iconv \
-        php81-tokenizer \
-        php81-zip \
-        php81-simplexml \
-        php81-mbstring \
-        php81-gd \
+        php${PHP_VERSION} \
+        php${PHP_VERSION}-fpm \
+        php${PHP_VERSION}-opcache \
+        php${PHP_VERSION}-pecl-apcu \
+        php${PHP_VERSION}-mysqli \
+        php${PHP_VERSION}-cli \
+        php${PHP_VERSION}-ldap \
+        php${PHP_VERSION}-imap \
+        php${PHP_VERSION}-intl \
+        php${PHP_VERSION}-pgsql \
+        php${PHP_VERSION}-json \
+        php${PHP_VERSION}-openssl \
+        php${PHP_VERSION}-curl \
+        php${PHP_VERSION}-zlib \
+        php${PHP_VERSION}-bz2 \
+        php${PHP_VERSION}-soap \
+        php${PHP_VERSION}-xml \
+        php${PHP_VERSION}-fileinfo \
+        php${PHP_VERSION}-phar \
+        php${PHP_VERSION}-intl \
+        php${PHP_VERSION}-dom \
+        php${PHP_VERSION}-xmlreader \
+        php${PHP_VERSION}-ctype \
+        php${PHP_VERSION}-session \
+        php${PHP_VERSION}-iconv \
+        php${PHP_VERSION}-tokenizer \
+        php${PHP_VERSION}-zip \
+        php${PHP_VERSION}-simplexml \
+        php${PHP_VERSION}-mbstring \
+        php${PHP_VERSION}-gd \
         nginx \
         runit \
         curl \
-        # php8-pdo \
-        # php8-pdo_pgsql \
-        # php8-pdo_mysql \
-        # php8-pdo_sqlite \
-        # php8-bz2 \
+        # php${PHP_VERSION}-pdo \
+        # php${PHP_VERSION}-pdo_pgsql \
+        # php${PHP_VERSION}-pdo_mysql \
+        # php${PHP_VERSION}-pdo_sqlite \
+        # php${PHP_VERSION}-bz2 \
 # Bring in gettext so we can get `envsubst`, then throw
 # the rest away. To do this, we need to install `gettext`
 # then move `envsubst` out of the way so `gettext` can
