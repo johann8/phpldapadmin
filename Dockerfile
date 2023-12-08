@@ -1,6 +1,6 @@
 ARG ARCH=
 
-ARG BASE_IMAGE=alpine:3.18
+ARG BASE_IMAGE=alpine:3.19
 
 FROM ${ARCH}${BASE_IMAGE}
 
@@ -20,7 +20,7 @@ ARG POST_MAX_FILESIZE=5M
 
 ARG UPLOAD_MAX_FILESIZE=10M
 
-ARG PLA_VERSION=1.2.6.6-r0
+ARG PLA_VERSION=1.2.6.6-r1
 
 ENV PHP_VERSION 81
 
@@ -57,6 +57,7 @@ RUN apk --no-cache add \
         php${PHP_VERSION}-simplexml \
         php${PHP_VERSION}-mbstring \
         php${PHP_VERSION}-gd \
+        php${PHP_VERSION}-gettext \
         nginx \
         runit \
         curl \
