@@ -20,7 +20,7 @@ ARG POST_MAX_FILESIZE=5M
 
 ARG UPLOAD_MAX_FILESIZE=10M
 
-ARG PLA_VERSION=1.2.6.6-r1
+ARG PLA_VERSION=1.2.6.7-r0
 
 ENV PHP_VERSION 81
 
@@ -98,22 +98,22 @@ RUN rm -rf /var/www/localhost/htdocs \
 
 ### === fix bug #183 on github ===
 # --- Start ---
-RUN if [ -f /usr/share/webapps/phpldapadmin/lib/functions.php ]; then \
-       # create backup
-       mv /usr/share/webapps/phpldapadmin/lib/functions.php /usr/share/webapps/phpldapadmin/lib/functions.php.back; \
-    fi 
+#RUN if [ -f /usr/share/webapps/phpldapadmin/lib/functions.php ]; then \
+#       # create backup
+#       mv /usr/share/webapps/phpldapadmin/lib/functions.php /usr/share/webapps/phpldapadmin/lib/functions.php.back; \
+#    fi 
 
-COPY assets/phpldapadmin/web/functions.php /usr/share/webapps/phpldapadmin/lib/ 
+#COPY assets/phpldapadmin/web/functions.php /usr/share/webapps/phpldapadmin/lib/ 
 # --- End ---
 
 ### === fix bug #193 on github ===
 # --- Start ---
-RUN if [ -f /usr/share/webapps/phpldapadmin/lib/createlm.php ]; then \
-       # create backup
-       mv /usr/share/webapps/phpldapadmin/lib/createlm.php /usr/share/webapps/phpldapadmin/lib/createlm.php.back; \
-    fi
+#RUN if [ -f /usr/share/webapps/phpldapadmin/lib/createlm.php ]; then \
+#       # create backup
+#       mv /usr/share/webapps/phpldapadmin/lib/createlm.php /usr/share/webapps/phpldapadmin/lib/createlm.php.back; \
+#    fi
 
-COPY assets/phpldapadmin/web/createlm.php /usr/share/webapps/phpldapadmin/lib/
+#COPY assets/phpldapadmin/web/createlm.php /usr/share/webapps/phpldapadmin/lib/
 # --- End ---
 
 
