@@ -1,6 +1,6 @@
 ARG ARCH=
 
-ARG BASE_IMAGE=alpine:3.20
+ARG BASE_IMAGE=alpine:3.19
 
 FROM ${ARCH}${BASE_IMAGE}
 
@@ -20,9 +20,10 @@ ARG POST_MAX_FILESIZE=5M
 
 ARG UPLOAD_MAX_FILESIZE=10M
 
-ARG PLA_VERSION=1.2.6.7-r1
+ENV PLA_VERSION=1.2.6.7-r0
 
-ENV PHP_VERSION 83
+# php version 8.2 und 8.3 does not work
+ENV PHP_VERSION 81
 
 # Install packages
 RUN apk --no-cache add \
@@ -116,6 +117,19 @@ RUN rm -rf /var/www/localhost/htdocs \
 #COPY assets/phpldapadmin/web/createlm.php /usr/share/webapps/phpldapadmin/lib/
 # --- End ---
 
+# Doesn't help: Fix bug for php8.2 /php 8.3 :Creation of dynamic property AttributeType::$is_obsolete is deprecated
+# --- Start ---
+#ARG PATH_LIB="/usr/share/webapps/phpldapadmin/lib";
+#RUN if [ -d /usr/share/webapps/phpldapadmin/lib ]; then \
+#       sed -i '15i #[\\AllowDynamicProperties]'  /usr/share/webapps/phpldapadmin/lib/PLAAttribute.php; \
+#       sed -i '15i #[\\AllowDynamicProperties]'  /usr/share/webapps/phpldapadmin/lib/Query.php; \
+#       sed -i '31i #[\\AllowDynamicProperties]'  /usr/share/webapps/phpldapadmin/lib/Template.php; \
+#       sed -i '18i        private \$url_base;'   /usr/share/webapps/phpldapadmin/lib/TemplateRender.php; \
+#       sed -i '19i        private $layout;'      /usr/share/webapps/phpldapadmin/lib/TemplateRender.php; \
+#       sed -i '147i #[\\AllowDynamicProperties]' /usr/share/webapps/phpldapadmin/lib/import_functions.php; \
+#       sed -i '15i #[\\AllowDynamicProperties]'  /usr/share/webapps/phpldapadmin/lib/page.php; \
+#    fi
+# --- End ---
 
 # Add configuration files
 COPY --chown=nobody rootfs/ /
