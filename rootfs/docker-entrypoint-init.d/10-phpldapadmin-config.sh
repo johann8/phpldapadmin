@@ -1,4 +1,7 @@
 #!/bin/sh -e
+#
+# set vars
+#PLA_VERSION=1.2.6.7-r1
 
 echo -e "\n"
 echo "+----------------------------------------------------------+"
@@ -6,6 +9,11 @@ echo "|                                                          |"
 echo "|             Welcome to PHPLDAPAdmin Docker!              |"
 echo "|                                                          |"
 echo "+----------------------------------------------------------+"
+
+echo ""
+echo "INFO: Start PHPLDAPAdmin version \"${PLA_VERSION}\"."
+echo ""
+echo "INFO: PHP version \"${PHP_VERSION}\"."
 
 echo -e "\n"
 echo -n "Setting variable... "
@@ -44,3 +52,4 @@ if [ -e "${PHPLDAPADMIN_CONFIG_FILE}" ]; then
     #touch $FIRST_START_DONE
   fi
 fi
+
