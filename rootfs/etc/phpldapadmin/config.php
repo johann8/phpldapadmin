@@ -496,6 +496,7 @@ $servers->setValue('login','attr','dn');
 /* This feature allows phpLDAPadmin to automatically determine the next
    available uidNumber for a new entry. */
 // $servers->setValue('auto_number','enable',true);
+$servers->setValue('auto_number','enable',true);
 
 /* The mechanism to use when finding the next available uidNumber. Two possible
    values: 'uidpool' or 'search'.
@@ -504,13 +505,16 @@ $servers->setValue('login','attr','dn');
    for entries with a uidNumber value and finds the first available uidNumber
    (slower). */
 // $servers->setValue('auto_number','mechanism','search');
+$servers->setValue('auto_number','mechanism','search');
 
 /* The DN of the search base when the 'search' mechanism is used above. */
 #  $servers->setValue('auto_number','search_base','ou=People,dc=example,dc=com');
+$servers->setValue('auto_number','search_base','{{ PHPLDAPADMIN_SEARCH_BASE }}');
 
 /* The minimum number to use when searching for the next available number
    (only when 'search' is used for auto_number. */
 // $servers->setValue('auto_number','min',array('uidNumber'=>1000,'gidNumber'=>500));
+$servers->setValue('auto_number','min',array('uidNumber'=>10000,'gidNumber'=>10000));
 
 /* If you set this, then phpldapadmin will bind to LDAP with this user ID when
    searching for the uidnumber. The idea is, this user id would have full
